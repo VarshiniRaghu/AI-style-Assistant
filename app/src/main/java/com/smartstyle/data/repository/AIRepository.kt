@@ -14,4 +14,7 @@ interface AIRepository{
     suspend fun getChatReply(prompt: String): Result<String>
     suspend fun analyzeImageForLabels(bitmap: Bitmap): Result<List<String>>
     suspend fun getSimilarItems(embedding: FloatArray): Result<List<Item>>
+    suspend fun getImageLabels(bitmap: Bitmap): Result<List<String>>
+    suspend fun getImageEmbedding(bitmap: Bitmap): Result<FloatArray>
+
 }

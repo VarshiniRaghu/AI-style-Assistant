@@ -50,8 +50,12 @@ object AppModule {
     @Provides
     fun provideUserDao(db: AppDatabase) = db.userDao()
 
+    @Provides
+    fun provideContext(@ApplicationContext context: Context): Context = context
+
     @Provides @Singleton
     fun provideAIRepository(
-        openAIService: OpenAIService
-    ): AIRepository = AIRepositoryImpl(openAIService)
+        openAIService: OpenAIService,
+        @ApplicationContext context: Context
+    ): AIRepository = AIRepositoryImpl(openAIService, context)
 }
