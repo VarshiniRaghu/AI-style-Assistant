@@ -8,11 +8,12 @@ import com.smartstyle.ml.MLKitVisionProcessor
 import com.smartstyle.util.Result
 import javax.inject.Inject
 
+private const val YOUR_KEY = ""
 class AIRepositoryImpl @Inject constructor(private val api: OpenAIService): AIRepository{
     override suspend fun getChatReply(prompt: String): Result<String>{
         return try{
             val req = ChatRequest("gpt-4o-mini", listOf(Message("user", prompt)))
-            val res = api.createChatCompletion("Bearer YOUR_KEY", req)
+            val res = api.createChatCompletion("Bearer $YOUR_KEY", req)
             Result.Success(res.choices.first().message.content)
         }catch(e:Exception){ Result.Error(e) }
     }
