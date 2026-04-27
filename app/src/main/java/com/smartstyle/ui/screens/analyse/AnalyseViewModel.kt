@@ -72,6 +72,10 @@ class AnalyseViewModel @Inject constructor(
         _uiState.value = AnalyseUiState.Idle
     }
 
+    internal fun setState(state: AnalyseUiState) {
+        _uiState.value = state
+    }
+
     private suspend fun loadBitmap(uri: Uri): Bitmap? = withContext(Dispatchers.IO) {
         try {
             context.contentResolver.openInputStream(uri)?.use {

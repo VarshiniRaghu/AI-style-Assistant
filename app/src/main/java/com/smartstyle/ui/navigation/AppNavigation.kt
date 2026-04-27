@@ -1,8 +1,8 @@
 package com.smartstyle.ui.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.Style
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,8 +17,8 @@ import com.smartstyle.ui.screens.analyse.AnalyseScreen
 import com.smartstyle.ui.screens.history.HistoryScreen
 
 private sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
-    object Analyse : Screen("analyse", "Analyse", Icons.Default.Style)
-    object History : Screen("history", "History", Icons.Default.History)
+    object Analyse : Screen("analyse", "Analyse", Icons.Default.Search)
+    object History : Screen("history", "History", Icons.Default.Star)
 }
 
 private val screens = listOf(Screen.Analyse, Screen.History)

@@ -46,7 +46,7 @@ class GeminiService(apiKey: String) {
         return parseResponse(raw)
     }
 
-    private fun parseResponse(raw: String): OutfitAnalysis {
+    internal fun parseResponse(raw: String): OutfitAnalysis {
         val json = raw.trim()
             .removePrefix("```json").removePrefix("```")
             .removeSuffix("```").trim()

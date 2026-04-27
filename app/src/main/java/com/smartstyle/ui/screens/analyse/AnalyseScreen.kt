@@ -16,9 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddAPhoto
-import androidx.compose.material.icons.filled.PhotoLibrary
-import androidx.compose.material.icons.filled.Style
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -98,25 +96,13 @@ fun AnalyseScreen(viewModel: AnalyseViewModel = hiltViewModel()) {
                 is AnalyseUiState.ImageReady -> {
                     OutfitImage(state.bitmap)
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        OutlinedButton(onClick = ::launchCamera) {
-                            Icon(Icons.Default.AddAPhoto, null, Modifier.size(18.dp))
-                            Spacer(Modifier.width(6.dp))
-                            Text("Retake")
-                        }
-                        OutlinedButton(onClick = { galleryLauncher.launch("image/*") }) {
-                            Icon(Icons.Default.PhotoLibrary, null, Modifier.size(18.dp))
-                            Spacer(Modifier.width(6.dp))
-                            Text("Gallery")
-                        }
+                        OutlinedButton(onClick = ::launchCamera) { Text("Retake") }
+                        OutlinedButton(onClick = { galleryLauncher.launch("image/*") }) { Text("Gallery") }
                     }
                     Button(
                         onClick = viewModel::analyzeOutfit,
                         modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Icon(Icons.Default.Style, null, Modifier.size(18.dp))
-                        Spacer(Modifier.width(8.dp))
-                        Text("Analyse Outfit")
-                    }
+                    ) { Text("Analyse Outfit") }
                 }
 
                 is AnalyseUiState.Analysing -> {
@@ -181,7 +167,7 @@ private fun IdleContent(onCamera: () -> Unit, onGallery: () -> Unit) {
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(
-                Icons.Default.Style,
+                Icons.Default.Search,
                 contentDescription = null,
                 modifier = Modifier.size(64.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -199,16 +185,8 @@ private fun IdleContent(onCamera: () -> Unit, onGallery: () -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        Button(onClick = onCamera, modifier = Modifier.weight(1f)) {
-            Icon(Icons.Default.AddAPhoto, null, Modifier.size(18.dp))
-            Spacer(Modifier.width(8.dp))
-            Text("Camera")
-        }
-        OutlinedButton(onClick = onGallery, modifier = Modifier.weight(1f)) {
-            Icon(Icons.Default.PhotoLibrary, null, Modifier.size(18.dp))
-            Spacer(Modifier.width(8.dp))
-            Text("Gallery")
-        }
+        Button(onClick = onCamera, modifier = Modifier.weight(1f)) { Text("Camera") }
+        OutlinedButton(onClick = onGallery, modifier = Modifier.weight(1f)) { Text("Gallery") }
     }
 }
 
